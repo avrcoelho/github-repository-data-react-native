@@ -1,0 +1,25 @@
+{
+  "presets": ["module:metro-react-native-babel-preset"],
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      {
+        // pastaonde vai estar todos os dados da aplicação
+        "rootPathSuffix": "src"
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-root-import",
+          {
+            // pastaonde vai estar todos os dados da aplicação
+            "rootPathSuffix": "src"
+          }
+        ]
+      ]
+    }
+  }
+}
