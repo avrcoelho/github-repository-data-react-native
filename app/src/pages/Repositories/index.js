@@ -19,8 +19,9 @@ export default class Repositories extends Component {
     loading: false,
     loadingList: true,
     error: false,
+    errorMsg: '',
     refreshing: false,
-    repository: ''
+    repository: '',
   };
 
   static propTypes = {
@@ -34,7 +35,17 @@ export default class Repositories extends Component {
   }
 
   checkRepositoryExists = async (repository) => {
-    const  { data } = await api.get(`/repos/${repository}`);
+    const { data } = await api.get(`/repos/${repository}`);
+
+    let storage = await AsyncStorage.getItem('@Gihuner:repositories');
+
+    if (storage) {
+      storage = JSON.parse(storage);
+
+      const select = storage.find(repo => repo.id === data.id);
+
+      if (!select) return false;
+    }
 
     return data;
   }
@@ -61,12 +72,17 @@ export default class Repositories extends Component {
 
     try {
       const data = await this.checkRepositoryExists(repository);
-      await this.saveRepository(data);
 
-      this.setState({ repositories: [...this.state.repositories, data ], loading: false });
+      if (data) {
+        await this.saveRepository(data);
+
+        this.setState({ repositories: [...this.state.repositories, data], loading: false });
+      } else {
+        this.setState({ error: true, errorMsg: 'Repositório já existente.' });
+      }
 
     } catch (err) {
-      this.setState({ error: true });
+      this.setState({ error: true, errorMsg: 'Usuário inexistente.' });
       console.tron.log('Not found');
     } finally {
       this.setState({ loading: false });
@@ -81,9 +97,11 @@ export default class Repositories extends Component {
     if (storage) {
       const data = JSON.parse(storage);
 
-      this.setState({ repositories: data, loading: false, refreshing: false, loadingList: false });
+      this.setState({
+        repositories: data, loading: false, refreshing: false, loadingList: false,
+      });
     } else {
-      this.setState({loading: false, refreshing: false, loadingList: false });
+      this.setState({ loading: false, refreshing: false, loadingList: false });
     }
   }
 
@@ -109,7 +127,9 @@ export default class Repositories extends Component {
   }
 
   render() {
-    const {loadingList, loading, error, repository } = this.state;
+    const {
+      loadingList, loading, error, repository, errorMsg,
+    } = this.state;
 
     return (
       <View style={styles.container}>
@@ -117,7 +137,7 @@ export default class Repositories extends Component {
         <Header title="Gitissues" isBack={false} />
         <View style={styles.Content}>
 
-          {error && <Text style={styles.error}>Usuário inexistente.</Text>}
+          {error && <Text style={styles.error}>{errorMsg}</Text>}
 
           <View style={styles.form}>
             <TextInput

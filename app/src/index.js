@@ -1,28 +1,12 @@
-import React, { Component } from 'react';
-import { AsyncStorage } from 'react-native';
+import React from 'react';
 import '~/config/ReactotronConfig';
 
 import createNavigator from './routes';
 
-export default class App extends Component {
-  state = {
-    repositories: [],
-  };
+const App = () => {
+  const Routes = createNavigator();
 
-  async componentDidMount() {
-    // const repositories = AsyncStorage.getItem('@Gihuner:repositories');
-    // // !! troca o valor para booleano
-    // this.setState({ repositories });
-  }
+  return <Routes />;
+};
 
-  render() {
-    // const { userChecked, userLogged } = this.state;
-
-    // para não retornar nada
-    // if (!userChecked) return null;
-
-    const Routes = createNavigator();
-
-    return <Routes />;
-  }
-}
+export default App;
