@@ -8,12 +8,14 @@ const styles = StyleSheet.create({
     height: 54 + getStatusBarHeight(),
     paddingTop: getStatusBarHeight(),
     borderBottomWidth: 1,
-    borderBottomColor: colors.light,
+    borderBottomColor: colors.white,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: metrics.basePadding,
+    backgroundColor: colors.white,
   },
+  
 
   title: {
     fontSize: 16,

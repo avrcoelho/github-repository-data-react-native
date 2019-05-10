@@ -7,22 +7,21 @@ import createNavigator from './routes';
 export default class App extends Component {
   state = {
     repositories: [],
-  }
+  };
 
   async componentDidMount() {
-    const repositories = AsyncStorage.getItem('@Gihuner:repositories');
-
-    // !! troca o valor para booleano
-    this.setState({ repositories });
+    // const repositories = AsyncStorage.getItem('@Gihuner:repositories');
+    // // !! troca o valor para booleano
+    // this.setState({ repositories });
   }
 
   render() {
-    const { userChecked, userLogged } = this.state;
+    // const { userChecked, userLogged } = this.state;
 
     // para não retornar nada
-    if (!userChecked) return null;
+    // if (!userChecked) return null;
 
-    const Routes = createNavigator(userLogged);
+    const Routes = createNavigator();
 
     return <Routes />;
   }

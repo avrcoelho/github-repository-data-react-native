@@ -3,12 +3,16 @@ import { colors, metrics } from '~/styles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
     flex: 1,
-    padding: metrics.basePadding * 2,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     // todo os elementos vão ocupar a largura total da pagina
     alignItems: 'stretch',
+  },
+
+  Content: {
+    marginHorizontal: metrics.basePadding,
+    flex: 1,
   },
 
   title: {
@@ -33,29 +37,32 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    marinTop: metrics.baseMargin * 2,
+    marginTop: metrics.baseMargin * 2,
+    flexDirection: 'row',
+    paddingBottom: metrics.basePadding,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.regular,
   },
 
   input: {
     backgroundColor: colors.white,
     borderRadius: metrics.baseRadius,
+    marginRight: metrics.baseMargin * 2,
     height: 44,
+    flex: 1,
     paddingHorizontal: metrics.basePadding,
   },
 
   button: {
-    backgroundColor: colors.primary,
-    borderRadius: metrics.baseRadius,
+    backgroundColor: colors.transparent,
     height: 44,
-    marginTop: metrics.baseMargin,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
 
-  buttonText: {
-    color: colors.white,
+  buttonIcon: {
+    color: colors.dark,
     fontWeight: 'bold',
-    fontSize: 16,
   },
 });
 
