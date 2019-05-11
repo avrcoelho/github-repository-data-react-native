@@ -76,7 +76,7 @@ export default class Repositories extends Component {
       if (data) {
         await this.saveRepository(data);
 
-        this.setState({ repositories: [...this.state.repositories, data], loading: false });
+        this.setState({ repositories: [...this.state.repositories, data], repository: '', loading: false });
       } else {
         this.setState({ error: true, errorMsg: 'Repositório já existente.' });
       }

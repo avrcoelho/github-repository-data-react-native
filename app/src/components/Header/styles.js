@@ -6,7 +6,6 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 const styles = StyleSheet.create({
   container: {
     height: 54 + getStatusBarHeight(),
-    // paddingTop: getStatusBarHeight(),
     borderBottomWidth: 1,
     borderBottomColor: colors.white,
     flexDirection: 'row',

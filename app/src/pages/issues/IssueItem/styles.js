@@ -32,6 +32,10 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
+
+  icon: {
+    paddingLeft: metrics.basePadding
+  }
 });
 
 export default styles;

@@ -14,22 +14,7 @@ const styles = StyleSheet.create({
     marginHorizontal: metrics.basePadding,
     flex: 1,
   },
-
-  title: {
-    textAlign: 'center',
-    color: colors.white,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-
-  text: {
-    textAlign: 'center',
-    color: colors.light,
-    marginTop: metrics.baseMargin,
-    fontSize: 15,
-    lineHeight: 21,
-  },
-
+  
   error: {
     color: colors.danger,
     textAlign: 'center',

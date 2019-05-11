@@ -44,17 +44,25 @@ export default class Issues extends Component {
     try {
       const { data } = await api.get(`/repos/${repository}/issues`);
 
-      this.setState({ issues: data, issuesFilter: data, refreshing: true, loading: true });
+      this.setState({ issues: data, issuesFilter: data, refreshing: false, loading: false });
 
     } catch (err) {
-      this.setState({ error: true, refreshing: true, loading: true });
+      this.setState({ error: true, refreshing: false, loading: false });
       console.tron.log('Not found');
     }
   }
 
   issuesFilter = (condition) => {
+
     const { issues } = this.state;
-    const filter = issues.filter(issue => issue.state !== condition)
+
+    if (condition === 'all') {
+      this.setState({ issuesFilter: issues })
+
+      return;
+    }
+
+    const filter = issues.filter(issue => issue.state === condition)
 
     this.setState({ issuesFilter: filter })
   }
@@ -90,14 +98,14 @@ export default class Issues extends Component {
         <StatusBar barStyle="light-content" />
         <Header title="Gitissues" isBack />
         <View style={styles.Content}>
-          <View style={styles.form}>
-            <TouchableOpacity style={styles.button} onPress={this.issuesFilter('all')}>
+          <View style={styles.menu}>
+            <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('all')}>
               <Text style={styles.buttonText}>Todas</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={this.issuesFilter('close')}>
+            <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('open')}>
               <Text style={styles.buttonText}>Abertas</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={this.issuesFilter('open')}>
+            <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('close')}>
               <Text style={styles.buttonText}>Fechadas</Text>
             </TouchableOpacity>
           </View>

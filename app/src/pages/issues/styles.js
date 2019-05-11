@@ -15,42 +15,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  title: {
-    textAlign: 'center',
-    color: colors.white,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-
-  text: {
-    textAlign: 'center',
-    color: colors.light,
-    marginTop: metrics.baseMargin,
-    fontSize: 15,
-    lineHeight: 21,
-  },
-
-  error: {
-    color: colors.danger,
-    textAlign: 'center',
-    marginTop: metrics.baseMargin * 2,
-  },
-
-  form: {
+  menu: {
     marginTop: metrics.baseMargin * 2,
     flexDirection: 'row',
     paddingBottom: metrics.basePadding,
     borderBottomWidth: 1,
     borderBottomColor: colors.regular,
-  },
-
-  input: {
-    backgroundColor: colors.white,
-    borderRadius: metrics.baseRadius,
-    marginRight: metrics.baseMargin * 2,
-    height: 44,
-    flex: 1,
-    paddingHorizontal: metrics.basePadding,
   },
 
   button: {
