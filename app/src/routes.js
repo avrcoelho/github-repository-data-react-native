@@ -15,6 +15,7 @@ const Routes = () => createAppContainer(
       // rota inciial do app
       // se userLogged for true chama Repositories senão chama welcome
       initialRouteName: 'Repositories',
+      backBehavior: 'initialRoute'
     },
   ),
 );

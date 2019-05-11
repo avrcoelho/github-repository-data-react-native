@@ -13,10 +13,10 @@ const redirectUrl = (url) => {
 
 const IssueItem = ({ issue }) => (
   <View style={styles.container} onPress={redirectUrl}>
-    <Image style={styles.avatar} source={{ uri: issue.owner.avatar_url }} />
+    <Image style={styles.avatar} source={{ uri: issue.user.avatar_url }} />
     <View style={styles.infoContainer}>
-      <Text style={styles.name}>{issue.name}</Text>
-      <Text style={styles.login}>{issue.owner.login}</Text>
+      <Text style={styles.name}>{issue.title}</Text>
+      <Text style={styles.login}>{issue.user.login}</Text>
     </View>
     <Icon style={styles.icon} name="angle-right" size={25} />
   </View>
@@ -24,14 +24,12 @@ const IssueItem = ({ issue }) => (
 
 IssueItem.propTypes = {
   issue: PropTypes.shape({
-    // data: PropTypes.shape({
-    full_name: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    owner: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       avatar_url: PropTypes.string.isRequired,
-      // }),
-    }),
+    }).isRequired,
   }).isRequired,
 };
 

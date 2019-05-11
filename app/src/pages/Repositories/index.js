@@ -44,7 +44,7 @@ export default class Repositories extends Component {
 
       const select = storage.find(repo => repo.id === data.id);
 
-      if (!select) return false;
+      if (select) return false;
     }
 
     return data;
