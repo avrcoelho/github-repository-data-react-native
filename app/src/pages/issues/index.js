@@ -19,6 +19,7 @@ export default class Issues extends Component {
     loading: true,
     error: false,
     refreshing: false,
+    activeButton: 'all'
   };
 
   static propTypes = {
@@ -57,14 +58,14 @@ export default class Issues extends Component {
     const { issues } = this.state;
 
     if (condition === 'all') {
-      this.setState({ issuesFilter: issues })
+      this.setState({ issuesFilter: issues, activeButton: condition })
 
       return;
     }
 
     const filter = issues.filter(issue => issue.state === condition)
 
-    this.setState({ issuesFilter: filter })
+    this.setState({ issuesFilter: filter, activeButton: condition })
   }
 
   renderListItem = ({ item }) => <IssueItem issue={item} />
@@ -91,6 +92,7 @@ export default class Issues extends Component {
   render() {
     const {
       loading,
+      activeButton,
     } = this.state;
 
     return (
@@ -100,13 +102,13 @@ export default class Issues extends Component {
         <View style={styles.Content}>
           <View style={styles.menu}>
             <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('all')}>
-              <Text style={styles.buttonText}>Todas</Text>
+              <Text style={activeButton === 'all' ? styles.buttonTextActive : styles.buttonText}>Todas</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('open')}>
-              <Text style={styles.buttonText}>Abertas</Text>
+              <Text style={activeButton === 'open' ? styles.buttonTextActive : styles.buttonText}>Abertas</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => this.issuesFilter('close')}>
-              <Text style={styles.buttonText}>Fechadas</Text>
+              <Text style={activeButton === 'close' ? styles.buttonTextActive : styles.buttonText}>Fechadas</Text>
             </TouchableOpacity>
           </View>
           {loading ? <ActivityIndicator style={styles.loading} /> : this.renderList() }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //  quando um componente precisa usar a parte de navegação, mas ele não pe um pagina
-import { withNavigation, NavigationActions } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 
 import {

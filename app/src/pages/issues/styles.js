@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
     color: colors.dark,
     fontWeight: 'bold',
   },
+  buttonTextActive: {
+    color: colors.white,
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
